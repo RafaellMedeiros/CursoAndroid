@@ -7,6 +7,7 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:textColor="#FF0000"
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -71,7 +72,7 @@
         android:id="@+id/btnLimpar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="24dp"
         android:layout_marginBottom="28dp"
         android:text="@string/txt_button_limpar"
         app:layout_constraintBottom_toTopOf="@+id/btn_finalizar"
@@ -85,16 +86,15 @@
         android:text="@string/txt_button_salvar"
         app:layout_constraintBottom_toTopOf="@+id/btn_finalizar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.925"
+        app:layout_constraintHorizontal_bias="0.922"
         app:layout_constraintStart_toEndOf="@+id/btnLimpar"
-        app:layout_constraintTop_toBottomOf="@+id/txtTelefone"
-        app:layout_constraintVertical_bias="0.363" />
+        app:layout_constraintTop_toBottomOf="@+id/txtTelefone" />
 
     <Button
         android:id="@+id/btn_finalizar"
         android:layout_width="379dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="288dp"
+        android:layout_marginBottom="264dp"
         android:text="@string/txt_button_finalizar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
