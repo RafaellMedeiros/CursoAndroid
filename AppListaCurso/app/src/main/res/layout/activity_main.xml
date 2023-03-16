@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".view.MainActivity">
 
-    <TextView
-        android:id="@+id/textView"
+    <TextView android:id="@+id/txtTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/txt_titulo"
@@ -20,8 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.039" />
 
-    <EditText
-        android:id="@+id/txtTitulo"
+    <EditText android:id="@+id/editNome"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_margin="16dp"
@@ -30,10 +28,9 @@
         android:importantForAutofill="no"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/txtTitulo" />
 
-    <EditText
-        android:id="@+id/txtNome"
+    <EditText android:id="@+id/editSobrenome"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_margin="16dp"
@@ -42,10 +39,9 @@
         android:importantForAutofill="no"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTitulo" />
+        app:layout_constraintTop_toBottomOf="@+id/editNome" />
 
-    <EditText
-        android:id="@+id/txtSobrenome"
+    <EditText android:id="@+id/editCurso"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_margin="16dp"
@@ -54,22 +50,22 @@
         android:importantForAutofill="no"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNome" />
+        app:layout_constraintTop_toBottomOf="@+id/editSobrenome" />
 
-    <EditText
-        android:id="@+id/txtTelefone"
+    <EditText android:id="@+id/editTelefone"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_margin="16dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="356dp"
         android:ems="10"
         android:hint="@string/txt_telefone"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtSobrenome"
+        app:layout_constraintTop_toBottomOf="@+id/editCurso"
         tools:ignore="Autofill" />
 
-    <Button
-        android:id="@+id/btnLimpar"
+    <Button android:id="@+id/btnLimpar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -78,8 +74,7 @@
         app:layout_constraintBottom_toTopOf="@+id/btn_finalizar"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/btn_salvar"
+    <Button android:id="@+id/btn_salvar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="28dp"
@@ -88,8 +83,7 @@
         app:layout_constraintBottom_toTopOf="@+id/btn_finalizar"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <Button
-        android:id="@+id/btn_finalizar"
+    <Button android:id="@+id/btn_finalizar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
