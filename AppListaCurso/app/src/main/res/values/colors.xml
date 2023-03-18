@@ -8,4 +8,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="corBotao">#57BEE5</color>
+    <color name="desteque_texto">#4C3F36</color>
 </resources>
