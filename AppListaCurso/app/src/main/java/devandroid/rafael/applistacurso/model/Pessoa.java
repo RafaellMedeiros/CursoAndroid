@@ -11,6 +11,13 @@ public class Pessoa {
 
     }
 
+    public Pessoa(String primeiroNome, String sobrenome, String curso, String telefone) {
+        this.primeiroNome = primeiroNome;
+        this.sobreNome = sobrenome;
+        this.cursoDesejado = curso;
+        this.telefone = telefone;
+    }
+
     public String getPrimeiroNome() {
         return primeiroNome;
     }

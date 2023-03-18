@@ -5,11 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import devandroid.rafael.applistacurso.R;
+import devandroid.rafael.applistacurso.controller.CursoController;
+import devandroid.rafael.applistacurso.controller.PessoaController;
 import devandroid.rafael.applistacurso.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,13 +29,16 @@ public class MainActivity extends AppCompatActivity {
     Button btn_salvar;
     Button btn_finalizar;
 
+    Spinner spinner;
+
+    PessoaController controller;
+    CursoController cursoController;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        pessoa = new Pessoa();
 
         editNome = findViewById(R.id.editNome);
         editSobrenome = findViewById(R.id.editSobrenome);
@@ -42,10 +49,24 @@ public class MainActivity extends AppCompatActivity {
         btn_salvar = findViewById(R.id.btn_salvar);
         btn_finalizar = findViewById(R.id.btn_finalizar);
 
+        spinner = findViewById(R.id.spinnerCursos);
+
+        controller = new PessoaController(MainActivity.this);
+        pessoa = controller.buscar();
+
+        cursoController = new CursoController();
+
         editNome.setText(pessoa.getPrimeiroNome());
         editSobrenome.setText(pessoa.getSobreNome());
         editCurso.setText(pessoa.getCursoDesejado());
         editTelefone.setText(pessoa.getTelefone());
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1,
+                cursoController.dadosCursos());
+        adapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+
+        spinner.setAdapter(adapter);
 
         btn_salvar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +75,9 @@ public class MainActivity extends AppCompatActivity {
                 pessoa.setSobreNome(editSobrenome.getText().toString());
                 pessoa.setCursoDesejado(editCurso.getText().toString());
                 pessoa.setTelefone(editTelefone.getText().toString());
-                Toast.makeText(MainActivity.this, pessoa.getPrimeiroNome() + " Salvo com sucesso", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, pessoa.getPrimeiroNome() + " Salvo com sucesso", Toast.LENGTH_LONG)
+                        .show();
+                controller.salvar(pessoa);
             }
         });
 
@@ -65,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
                 editSobrenome.setText("");
                 editCurso.setText("");
                 editTelefone.setText("");
+
+                controller.limpar();
             }
         });
         btn_finalizar.setOnClickListener(new View.OnClickListener() {
