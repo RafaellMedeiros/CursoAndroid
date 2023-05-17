@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:background="#C3AFABAB"
     android:orientation="vertical"
-    tools:context=".view.MainActivity">
+    tools:context=".view.MainActivity"
+    android:gravity="center">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -23,65 +24,14 @@
                 android:layout_marginTop="16dp"
                 android:gravity="center"
                 android:text="@string/txt_titulo"
-                android:textColor="@color/desteque_texto"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
-            <EditText android:id="@+id/editNome"
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_margin="16dp"
-                android:ems="10"
-                android:hint="@string/txt_hint_edit_primeiro_nome"
-                android:importantForAutofill="no"
-                android:inputType="textPersonName" />
-
-            <EditText android:id="@+id/editSobrenome"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_margin="16dp"
-                android:ems="10"
-                android:hint="@string/txt_hint_edit_sobrenome"
-                android:importantForAutofill="no"
-                android:inputType="textPersonName" />
-
-            <EditText android:id="@+id/editCurso"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_margin="16dp"
-                android:ems="10"
-                android:hint="@string/txt_hint_nome_do_curso"
-                android:importantForAutofill="no"
-                android:inputType="textPersonName" />
-
-            <TextView
-                android:id="@+id/txtDigiteCurso"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:gravity="center"
-                android:text="Selecione um Curso..."
-                android:textColor="@color/desteque_texto"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <Spinner
-                android:id="@+id/spinnerCursos"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp" />
-
-            <EditText android:id="@+id/editTelefone"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_margin="16dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="356dp"
-                android:ems="10"
-                android:hint="@string/txt_telefone"
-                android:inputType="textPersonName" />
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:src="@mipmap/ic_launcher_round" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
@@ -89,31 +39,82 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <Button android:id="@+id/btn_limpar"
+                <EditText
+                    android:id="@+id/editGasolina"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="192dp"
-                    android:text="@string/txt_button_limpar" />
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="30dp"
+                    android:ems="10"
+                    android:hint="@string/txt_hint_edit_gasolina"
+                    android:importantForAutofill="no"
+                    android:inputType="numberDecimal" />
 
-                <Button android:id="@+id/btn_salvar"
+                <EditText
+                    android:id="@+id/editEtanol"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/txt_button_salvar" />
+                    android:layout_height="match_parent"
+                    android:ems="10"
+                    android:hint="@string/txt_hint_edit_etanol"
+                    android:importantForAutofill="no"
+                    android:inputType="numberDecimal" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
+            <Button
+                android:id="@+id/btn_calcular"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/txt_button_calcular" />
 
-            <Button android:id="@+id/btn_finalizar"
+
+            <TextView
+                android:id="@+id/txt_resultado"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:gravity="center"
+                android:text="@string/txt_resultado"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+
+            <Button
+                android:id="@+id/btn_limpar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="5dp"
+                android:text="@string/txt_button_limpar" />
+
+            <Button
+                android:id="@+id/btn_salvar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="5dp"
+                android:text="@string/txt_button_salvar" />
+
+
+            <Button
+                android:id="@+id/btn_finalizar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="5dp"
                 android:text="@string/txt_button_finalizar" />
 
 
         </LinearLayout>
 
     </ScrollView>
-
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

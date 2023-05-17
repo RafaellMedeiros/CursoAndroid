@@ -1,11 +1,13 @@
 <resources>
-    <string name="app_name">AppGazEta</string>
-    <string name="txt_titulo">Aplicativo Lista VIP</string>
-    <string name="txt_hint_edit_primeiro_nome">Primeiro Nome</string>
-    <string name="txt_hint_edit_sobrenome">Sobrenome</string>
+    <string name="app_name">AppGasEta</string>
+    <string name="txt_titulo">GasEta</string>
+    <string name="txt_hint_edit_gasolina">R$ Gasolina</string>
+    <string name="txt_hint_edit_etanol">R$ Etanol</string>
     <string name="txt_hint_nome_do_curso">Nome do Curso Desejado</string>
     <string name="txt_telefone">Telefone</string>
+    <string name="txt_button_calcular">CALCULAR</string>
     <string name="txt_button_limpar">LIMPAR</string>
     <string name="txt_button_salvar">SALVAR</string>
     <string name="txt_button_finalizar">fINALIZAR</string>
+    <string name="txt_resultado">RESULTADO</string>
 </resources>

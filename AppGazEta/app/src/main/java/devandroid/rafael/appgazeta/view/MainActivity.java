@@ -4,35 +4,32 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import devandroid.rafael.appgazeta.R;
-import devandroid.rafael.appgazeta.controller.CursoController;
-import devandroid.rafael.appgazeta.controller.PessoaController;
-import devandroid.rafael.appgazeta.model.Pessoa;
+import devandroid.rafael.appgazeta.controller.Controller;
+import devandroid.rafael.appgazeta.model.Calculo;
 
 public class MainActivity extends AppCompatActivity {
 
-    Pessoa pessoa;
+    Controller controller;
 
-    EditText editNome;
-    EditText editSobrenome;
-    EditText editCurso;
-    EditText editTelefone;
+    Calculo calculo;
 
+    EditText editGasolina;
+    EditText editEtanol;
+    TextView txtResultado;
+
+    Button btn_calcular;
     Button btn_limpar;
     Button btn_salvar;
     Button btn_finalizar;
-
-    Spinner spinner;
-
-    PessoaController controller;
-    CursoController cursoController;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -40,65 +37,69 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        editNome = findViewById(R.id.editNome);
-        editSobrenome = findViewById(R.id.editSobrenome);
-        editCurso = findViewById(R.id.editCurso);
-        editTelefone = findViewById(R.id.editTelefone);
+        controller = new Controller(MainActivity.this);
 
+        editGasolina = findViewById(R.id.editGasolina);
+        editEtanol = findViewById(R.id.editEtanol);
+        txtResultado = findViewById(R.id.txt_resultado);
+
+        btn_calcular = findViewById(R.id.btn_calcular);
         btn_limpar = findViewById(R.id.btn_limpar);
         btn_salvar = findViewById(R.id.btn_salvar);
         btn_finalizar = findViewById(R.id.btn_finalizar);
 
-        spinner = findViewById(R.id.spinnerCursos);
+        calculo = controller.buscaCalculoSalvo();
+        if (calculo != null) {
+            editGasolina.setText(String.valueOf(calculo.getGasolina()));
+            editEtanol.setText(String.valueOf(calculo.getEtanol()));
+        }
 
-        controller = new PessoaController(MainActivity.this);
-        pessoa = controller.buscar();
-
-        cursoController = new CursoController();
-
-        editNome.setText(pessoa.getPrimeiroNome());
-        editSobrenome.setText(pessoa.getSobreNome());
-        editCurso.setText(pessoa.getCursoDesejado());
-        editTelefone.setText(pessoa.getTelefone());
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1,
-                cursoController.dadosCursos());
-        adapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
-
-        spinner.setAdapter(adapter);
-
-        btn_salvar.setOnClickListener(new View.OnClickListener() {
+        btn_calcular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                pessoa.setPrimeiroNome(editNome.getText().toString());
-                pessoa.setSobreNome(editSobrenome.getText().toString());
-                pessoa.setCursoDesejado(editCurso.getText().toString());
-                pessoa.setTelefone(editTelefone.getText().toString());
-                Toast.makeText(MainActivity.this, pessoa.getPrimeiroNome() + " Salvo com sucesso", Toast.LENGTH_LONG)
-                        .show();
-                controller.salvar(pessoa);
+                Editable gasolina = editGasolina.getText();
+                Editable etanol = editGasolina.getText();
+                boolean isDadosOk = true;
+
+
+                if (TextUtils.isEmpty(gasolina)) {
+                    editGasolina.setError("Atributo Obrigatorio");
+                    editGasolina.requestFocus();
+                    isDadosOk = false;
+                }
+
+
+                txtResultado.setText(controller.
+                        alterarTextoComBaseNosValoresGasolinaEEtanol(
+                                editGasolina.getText().toString(),
+                                editEtanol.getText().toString()));
             }
         });
 
         btn_limpar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                editNome.setText("");
-                editSobrenome.setText("");
-                editCurso.setText("");
-                editTelefone.setText("");
-
-                controller.limpar();
+                editEtanol.setText("");
+                editGasolina.setText("");
             }
         });
+
+        btn_salvar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "Dado Salvo com Sucesso", Toast.LENGTH_LONG)
+                        .show();
+                controller.salvar(editGasolina.getText().toString(), editEtanol.getText().toString());
+            }
+        });
+
         btn_finalizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "Volte Sempre", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "Volta Sempre", Toast.LENGTH_LONG)
+                        .show();
                 finish();
             }
         });
-
     }
 }
